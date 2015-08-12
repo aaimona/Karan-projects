@@ -1,0 +1,11 @@
+coinflip <- function(x) {
+  # 0 is heads, 1 is tails
+  if(class(x) != "numeric") 
+    stop("Error: x must be of class numeric")
+  if(x < 1) 
+    stop("Error: number of trials must be a positive integer")
+  fliprecord <- sample(c(0, 1), size = x, replace = TRUE, prob = c(0.5, 0.5))
+  print(fliprecord)
+  cat("Tails landed", sum(fliprecord), "times. ")
+  cat("Heads landed", x - sum(fliprecord), "times.")
+}
