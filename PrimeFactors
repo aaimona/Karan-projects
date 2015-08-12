@@ -1,0 +1,21 @@
+# This function returns prime factors for a given number. The number given cannot be too big;
+# with 8-digit number, R could not allocate a vector that weighed over 160 MB :) but 5-6 digits seems ok.
+primefactor <- function(x) {
+  if(class(x) != "numeric") {
+    return("Error: x must be numeric")
+  }
+  if(x < 2) {
+    return("Error: no prime factors for numbers less than 2")
+  }
+  halfx <- floor(x/2)
+  factors <- (c(2:halfx))[isPrime(2:halfx) == TRUE]
+  pr_fac <- c()
+  for(i in factors) {
+    while(x %% i == 0) {
+      pr_fac <- append(pr_fac, i)
+      x1 <- x / i
+      x <- x1
+    }
+  }
+  print(pr_fac)
+}
