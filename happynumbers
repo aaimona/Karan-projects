@@ -1,0 +1,23 @@
+# I had difficulty solving this one, but finally here it is :) One thing that mus be noticed here:
+# Unfortunately, I don't know the way for R to realize that it entered the endless loop and quit on its own
+# so that it go to the next number. That way I could use for loop to check numbers from a given interval.
+# If you want to find e.g. first eight happy numbers, as Karan suggested in his list, you have to go manually.
+happy <- function(x) {
+  if(class(x) != "numeric") {
+    stop("x must be an integer")
+  }
+  vector <- as.integer(substring(x, seq(nchar(x)), seq(nchar(x))))
+  sumsq <- sum(vector^2)
+  if(sumsq == 1) {
+    return(paste(x, "is a happy number."))
+  } else {
+  while(sumsq != 1) {
+    repeat {vector1 <- as.integer(substring(sumsq, seq(nchar(sumsq)), seq(nchar(sumsq))))
+            sum1 <- sum(vector1^2)
+            sumsq <- sum1
+            if(sumsq == 1) break
+    }
+  }
+}
+return(paste(x, "is a happy number."))
+}
